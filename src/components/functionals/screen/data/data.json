@@ -1,0 +1,38 @@
+[
+    {
+        "type": "example",
+        "text": "Explain quantum computing in simple terms"
+    },
+    {
+        "type": "example",
+        "text": "Got any creative ideas for a 10 year old's birthday?"
+    },
+    {
+        "type": "example",
+        "text": "How do I make an HTTP request in Javascript?"
+    },
+    {
+        "type": "capabilities",
+        "text": "Remembers what user said earlier in the conversation"
+    },
+    {
+        "type": "capabilities",
+        "text": "Allows user to provide follow-up corrections"
+    },
+    {
+        "type": "capabilities",
+        "text": "Trained to decline inappropriate requests"
+    },
+    {
+        "type": "limitations",
+        "text": "May occasionally generate incorrect information"
+    },
+    {
+        "type": "limitations",
+        "text": "May occasionally produce harmful instructions or biased content"
+    },
+    {
+        "type": "limitations",
+        "text": "Limited knowledge of world and events after 2021"
+    }
+]
