@@ -1,11 +1,18 @@
 import CreateChatButton from "../utils/CreateChatButton"
+import CreateChat from "./forms/CreateChat"
+import { useState } from 'react'
+import ChatsContainer from "./sidebar/ChatsContainer"
+ 
 
-type Props = {}
+export default function ChatList() {
 
-export default function ChatList({}: Props) {
+  const [isForm, setIsForm] = useState<boolean>(false)
+
   return (
     <div className="w-full text-white h-[75%] border-b border-gray-400/50">
-      <CreateChatButton />
+      <CreateChatButton setIsForm={setIsForm} />
+      <ChatsContainer />
+      {isForm ? <CreateChat setIsForm={setIsForm} /> : null}
     </div>
   )
 }
