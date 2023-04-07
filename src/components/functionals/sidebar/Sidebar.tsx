@@ -1,14 +1,20 @@
+import CloseMobileSidebar from '../../utils/CloseMobileSidebar'
 import ChatList from '../ChatList'
-import CreateChatButton from '../../utils/CreateChatButton'
 import SidebarOptions from './SidebarOptions'
 
-type Props = {}
+type Props = {
+  setIsDark: (isDark: boolean) => void,
+  setMobileSidebar: (mobileSidebar: boolean) => void,
+  isDark: boolean,
+  mobileSidebar: boolean
+}
 
-export default function Sidebar({}: Props) {
+export default function Sidebar({setIsDark, isDark, mobileSidebar, setMobileSidebar}: Props) {
   return (
-    <div className='min-w-[270px] bg-[#1e2124] h-screen overflow-y-hidden'>
+    <div className={`w-[70%] md:w-[auto] md:min-w-[270px] bg-[#1e2124] h-screen overflow-y-hidden fixed z-50 md:static ${mobileSidebar ? 'right-[30%]' : 'right-[100%]'}`}>
         <ChatList />
-        <SidebarOptions />
+        <SidebarOptions setIsDark={setIsDark} isDark={isDark} />
+        <CloseMobileSidebar setMobileSidebar={setMobileSidebar} mobileSidebar={mobileSidebar} />
     </div>
   )
 }
