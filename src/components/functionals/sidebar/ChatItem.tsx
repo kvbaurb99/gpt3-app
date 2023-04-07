@@ -24,15 +24,20 @@ export default function ChatItem({title, setCurrentChat, currentChat, id}: Props
     }
 
     const deleteChat = async () => {
+        navigate('/')
         try {
-            navigate('/')
-            await axios.post('http://localhost:3001/deleteChat', {
+                const response = await axios.post('http://localhost:3001/deleteChat', {
                 chatId: id,
             })
+
+            if (response.data.message) {
+                navigate('/')
+                window.location.reload()
+            }
+
         } catch (err) {
             console.log(err)
         }
-
     }
 
     const editChat = async () => {
@@ -53,7 +58,7 @@ export default function ChatItem({title, setCurrentChat, currentChat, id}: Props
             { !changeMode ? <p className='text-sm text-white'>{title}</p> : <input type='text' className='w-[80%] bg-gray-600/50 border border-blue-500 rounded outline-none px-1' value={changedTitle} required onChange={(e) => setChangedTitle(e.target.value)} />}
         </div>
         { currentChat === title ? <div className='text-sm flex items-center gap-2'>
-            { !changeMode ? <FiEdit3 onClick={() => setChangeMode(true)} className='hover:text-white' /> : <AiOutlineCheck onClick={editChat} className='hover:text-white' />}
+            { !changeMode ? <FiEdit3 onClick={() => setChangeMode(!changeMode)} className='hover:text-white' /> : <AiOutlineCheck onClick={editChat} className='hover:text-white' />}
             { !changeMode ? <BsTrash onClick={deleteChat} className='hover:text-white' /> : <AiOutlineClose className='hover:text-white' onClick={() => setChangeMode(false)}/>} 
         </div> : null}
     </div>
