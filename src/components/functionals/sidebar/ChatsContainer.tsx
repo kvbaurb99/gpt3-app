@@ -2,13 +2,16 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import ChatItem from "./ChatItem"
 import socket from "../../config/socket"
+import { useParams } from 'react-router-dom'
 
-type Props = {}
 
-export default function ChatsContainer({}: Props) {
+export default function ChatsContainer() {
 
     const [chatData, setChatData] = useState<[]>([])
-    const [currentChat, setCurrentChat] = useState<string>('')
+    const { id } = useParams()
+    const [currentChat, setCurrentChat] = useState<string>(() => {
+        return localStorage.getItem('currentChat') || '';
+      });
 
     const getChatData = async () => {
         try {
@@ -18,6 +21,18 @@ export default function ChatsContainer({}: Props) {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem('currentChat', currentChat);
+      }, [currentChat]);
+
+      useEffect(() => {
+        if (id === undefined) {
+            setCurrentChat('');
+        } else {
+            return;
+        }
+      }, [id])
 
     useEffect(() => {
 
@@ -33,10 +48,11 @@ export default function ChatsContainer({}: Props) {
 
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full overflow-y-scroll scrollbar-hide">
         <div className="w-[95%] mx-auto mt-2">
-            {chatData.map((chat: {title: string, _id: string}) => (
+            {chatData.map((chat: {title: string, _id: string}, index: number) => (
                 <ChatItem
+                    key={index}
                     title={chat.title}
                     setCurrentChat={setCurrentChat}
                     currentChat={currentChat}
