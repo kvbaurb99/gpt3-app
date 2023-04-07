@@ -9,7 +9,7 @@ export default function ChatList() {
   const [isForm, setIsForm] = useState<boolean>(false)
 
   return (
-    <div className="w-full text-white h-[75%] border-b border-gray-400/50">
+    <div className="w-full text-white h-[67%] md:h-[70%] border-b border-gray-400/50">
       <CreateChatButton setIsForm={setIsForm} />
       <ChatsContainer />
       {isForm ? <CreateChat setIsForm={setIsForm} /> : null}
