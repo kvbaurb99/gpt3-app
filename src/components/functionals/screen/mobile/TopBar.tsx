@@ -7,7 +7,7 @@ type Props = {
 
 export default function TopBar({setMobileSidebar, title}: Props) {
   return (
-    <div className='md:hidden flex bg-[#36393e] w-full h-[45px] border-b border-gray-400/50 items-center justify-between text-white'>
+    <div className='md:hidden flex bg-[#36393e] w-full h-[45px] border-b border-gray-400/50 items-center justify-between text-white fixed top-0 z-10'>
         <div className='ml-3'>
             <AiOutlineMenu onClick={() => setMobileSidebar(true)} className='text-xl' />
         </div>
