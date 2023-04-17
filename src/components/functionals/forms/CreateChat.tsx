@@ -21,7 +21,7 @@ export default function CreateChat({setIsForm}: Props) {
         setLoading(true)
 
         try {
-            const response = await axios.post('http://localhost:3001/createChat', {
+            const response = await axios.post('https://msggpt3.herokuapp.com/createChat', {
                 title: chatTitle,
             })
 

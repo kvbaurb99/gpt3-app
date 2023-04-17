@@ -15,7 +15,7 @@ export default function ChatsContainer() {
 
     const getChatData = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/api/chats');
+            const response = await axios.get('https://msggpt3.herokuapp.com/api/chats');
             setChatData(response.data)
         } catch (error) {
             console.log(error)

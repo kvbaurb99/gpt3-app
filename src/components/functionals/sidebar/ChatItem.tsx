@@ -26,7 +26,7 @@ export default function ChatItem({title, setCurrentChat, currentChat, id}: Props
     const deleteChat = async () => {
         navigate('/')
         try {
-                const response = await axios.post('http://localhost:3001/deleteChat', {
+                const response = await axios.post('https://msggpt3.herokuapp.com/deleteChat', {
                 chatId: id,
             })
 
@@ -42,7 +42,7 @@ export default function ChatItem({title, setCurrentChat, currentChat, id}: Props
 
     const editChat = async () => {
         try {
-            await axios.post(`http://localhost:3001/updateTitle/${id}`, {
+            await axios.post(`https://msggpt3.herokuapp.com/updateTitle/${id}`, {
                 newTitle: changedTitle
             })
             setChangeMode(false)
