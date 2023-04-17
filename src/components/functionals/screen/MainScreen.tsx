@@ -39,7 +39,7 @@ export default function MainScreen({isDark, setMobileSidebar, mobileSidebar}: Pr
       }
   
       try {
-        const response = await axios.get(`http://localhost:3001/api/chat/${id}`)
+        const response = await axios.get(`https://msggpt3.herokuapp.com/api/chat/${id}`)
         setTitle(response.data.title.title);
         setQuestionData(response.data.questions);
       } catch (err) {
@@ -62,11 +62,11 @@ export default function MainScreen({isDark, setMobileSidebar, mobileSidebar}: Pr
 
 
   return (
-    <div className='h-full md:h-screen w-full flex flex-col justify-end items-center'>
+    <div className='h-full md:h-screen w-full flex flex-col justify-end items-center md:mt-0 mt-[50px]'>
       <TopBar setMobileSidebar={setMobileSidebar} title={title} />
       {questionData.length > 0 ? (
         <div className={`w-full h-screen ${isDark ? 'bg-[#36393e]' : 'bg-white'} text-white flex flex-col justify-start items-center overflow-y-scroll scrollbar-hide`}>
-          <div className='flex flex-col gap-2 w-full mb-[5%]'>
+          <div className='flex flex-col gap-2 w-full mb-[40%] md:mb-[8%]'>
             {questionData.map((question: { question: string; answer: string }, index: number) => (
               <Question
                 key={index}
